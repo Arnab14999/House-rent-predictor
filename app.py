@@ -41,7 +41,7 @@ def predict():
 
         y_predictions=np.round(model.predict([X])[0],2)
         print(y_predictions)
-        return render_template('main.html', ypre=y_predictions)
+        return render_template('main.html', ypre='₹'+str(y_predictions))
 
 
 if __name__ == "__main__":
