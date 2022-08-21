@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>House Rent Predictor</title>
+
+    <style>
+        *{
+    margin:0;
+    padding: 0;
+}
+body{
+    background-color: aqua;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+div.main{
+    width: 500px;
+    margin: 50px auto 50px auto;
+}
+h2{
+    text-align: center;
+    padding: 15px;
+    font-family: sans-serif;
+}
+div.details{
+    background-color: rgba(0,0,0,0.6);
+    width: 100%;
+    height: 100%;
+    font-size: 18px;
+    border-radius: 10px;
+    border: 1px rgba(255,255,255,0.3);
+    box-shadow: 2px 2px 15px;
+    rgba(0,0,0,0.3);
+
+    color:#fff;
+}
+form#details{
+    margin-left: 50px;
+}
+label{
+    font-family: sans-serif;
+    font-size: 18px;
+}
+label#area{
+    margin-left: 130px;
+}
+select#city{
+    width: 400px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    outline: 0;
+    padding: 7px;
+    background-color: #fff;
+    box-shadow: inset 1px 1px 5px;
+    rgba(0,0,0,0.3);
+}
+
+input#bhk{
+    width: 162px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    outline: 0;
+    padding: 7px;
+    background-color: #fff;
+    box-shadow: inset 1px 1px 5px;
+    rgba(0,0,0,0.3);
+}
+input#size{
+    margin-left: 30px;
+    width: 162px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    outline: 0;
+    padding: 7px;
+    background-color: #fff;
+    box-shadow: inset 1px 1px 5px;
+    rgba(0,0,0,0.3);
+}
+input#min_floor{
+    width: 380px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    outline: 0;
+    padding: 7px;
+    background-color: #fff;
+    box-shadow: inset 1px 1px 5px;
+    rgba(0,0,0,0.3);
+}
+input#max_floor{
+    width: 380px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    outline: 0;
+    padding: 7px;
+    background-color: #fff;
+    box-shadow: inset 1px 1px 5px;
+    rgba(0,0,0,0.3);
+}
+input#bathrooms{
+    width: 380px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    outline: 0;
+    padding: 7px;
+    background-color: #fff;
+    box-shadow: inset 1px 1px 5px;
+    rgba(0,0,0,0.3);
+}
+
+
+p#Result{
+
+		border: 0;
+		margin-left: 10px;
+        margin-bottom: 90px;
+        margin-top: 30px;
+		box-sizing: border-box;
+
+		height: 35px;
+		text-align: center;
+        font-size: 18px;
+}
+
+.my-cta-button{
+	background: #f9f9f9;
+   	border: 2px solid #000000;
+    border-radius: 1000px;
+    box-shadow: 3px 3px #8c8c8c;
+	margin-top: 10px;
+    padding: 10px 36px;
+    color: #000000;
+    display: inline-block;
+   	font: italic bold 20px/1 "Calibri", sans-serif;
+    text-align: center;
+    margin-left: 120px;
+}
+    </style>
+</head>
+
+<body>
+<div class= "main">
+<div class= "details">
+    <h2>Enter The Details</h2>
+    <form action="{{ url_for('predict')}}" method="POST" id="details">
+        <label for="city">City :</label>
+        <br>
+        <select name="city" id="city">
+            <option value="Bangalore">Bangalore</option>
+            <option value="Chennai">Chennai</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="Kolkata">Kolkata</option>
+            <option value="Mumbai">Mumbai</option>
+        </select>
+        <br><br>
+        <label for="bhk">BHK :</label>
+        &nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;
+        <label for="size" id="area">Area :</label>
+        <br>
+        <input type="number" name="bhk" id="bhk" placeholder="Enter the value of BHK" min="1" value="1">
+        &nbsp;
+        <input type="number" name="size" id="size" placeholder="Enter the Area in sq m" min="10" value="500">
+        <br><br>
+        <label for="max_floor">Maximum number of floors in the building :</label>
+        <br>
+        <input type="number" id="max_floor" name="max_floor" min="0" max="90" value="1">
+        <br><br>
+        <label for="min_floor">Your preferred floor in the building :</label>
+        <br>
+        <input type="number" id="min_floor" name="min_floor" min="0" value="0">
+
+        <br><br>
+        <label >Furnishing Status :</label>
+        <br>
+        <input type="radio" id="Unfurnished" name="Furnishing_Status" value="Unfurnished">
+        <label for="Unfurnished">Unfurnished</label>&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="radio" id="Semi-Furnished" name="Furnishing_Status" value="Semi-Furnished">
+        <label for="Semi-Furnished">Semi-Furnished</label>&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="radio" id="Furnished" name="Furnishing_Status" value="Furnished" checked="checked">
+        <label for="Furnished">Furnished</label>
+        <br><br>
+        <label for="bathrooms">No of Bathrooms :</label>
+        <br>
+        <input type="number" name="bathrooms" id="bathrooms" min="1" max="10" value="1">
+        <br><br>
+        <input type="submit"  class="my-cta-button" value="Predict">
+
+    </form>
+    <div>
+        <p id="Result">Estimated Rent : {{ ypre }}</p>
+    </div>
+</div>
+</div>
+<footer>  
+	Copyright © 2012 | Arnab Sarkar | rentpredictorapi.herokuapp.com
+</footer>  
+</body>
