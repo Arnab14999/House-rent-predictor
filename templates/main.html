@@ -231,5 +231,17 @@ header{
         Copyright © 2022 | Arnab Sarkar | <a href="https://houserentguesser.herokuapp.com/">House rent predictor</a> | <a href="https://github.com/Arnab14999">My Github</a>
     </div> 
 	
-</footer>  
+</footer> 
+	<script>
+    const elX = document.getElementById("max_floor");
+
+    const elY = document.getElementById("min_floor");
+
+    function limit() {
+        elY.value=Math.min(Math.round(elX.value),elY.value);
+    }
+
+    elX.onchange=limit;
+    elY.onchange=limit;
+</script>
 </body>
