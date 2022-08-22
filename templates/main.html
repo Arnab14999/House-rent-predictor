@@ -179,7 +179,7 @@ header{
     <form action="{{ url_for('predict')}}" method="POST" id="details">
         <label for="city">City :</label>
         <br>
-        <select name="city" id="city">
+        <select name="city" id="city" required>
             <option value="Bangalore">Bangalore</option>
             <option value="Chennai">Chennai</option>
             <option value="Delhi">Delhi</option>
@@ -192,31 +192,31 @@ header{
         &nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;
         <label for="size" id="area">Area :</label>
         <br>
-        <input type="number" name="bhk" id="bhk" placeholder="Enter the value of BHK" min="1" value="1">
+        <input type="number" name="bhk" id="bhk" placeholder="Enter the value of BHK" min="1" required>
         &nbsp;
-        <input type="number" name="size" id="size" placeholder="Enter the Area in sq m" min="10" value="500">
+        <input type="number" name="size" id="size" placeholder="Enter the Area in sq m" min="10" required>
         <br><br>
         <label for="max_floor">Maximum number of floors in the building :</label>
         <br>
-        <input type="number" id="max_floor" name="max_floor" min="0" max="90" value="1">
+        <input type="number" id="max_floor" name="max_floor" min="0" max="90" placeholder="Maximum number of floors present" required>
         <br><br>
         <label for="min_floor">Your preferred floor in the building :</label>
         <br>
-        <input type="number" id="min_floor" name="min_floor" min="0" value="0">
+        <input type="number" id="min_floor" name="min_floor" min="0" placeholder="Your preferred floor" required>
 
         <br><br>
         <label >Furnishing Status :</label>
         <br>
-        <input type="radio" id="Unfurnished" name="Furnishing_Status" value="Unfurnished">
+        <input type="radio" id="Unfurnished" name="Furnishing_Status" value="Unfurnished" required="required">
         <label for="Unfurnished">Unfurnished</label>&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="radio" id="Semi-Furnished" name="Furnishing_Status" value="Semi-Furnished">
+        <input type="radio" id="Semi-Furnished" name="Furnishing_Status" value="Semi-Furnished" required="required">
         <label for="Semi-Furnished">Semi-Furnished</label>&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="radio" id="Furnished" name="Furnishing_Status" value="Furnished" checked="checked">
+        <input type="radio" id="Furnished" name="Furnishing_Status" value="Furnished" required="required" >
         <label for="Furnished">Furnished</label>
         <br><br>
         <label for="bathrooms">No of Bathrooms :</label>
         <br>
-        <input type="number" name="bathrooms" id="bathrooms" min="1" max="10" value="1">
+        <input type="number" name="bathrooms" id="bathrooms" min="1" max="10" placeholder="No of Bathrooms" required="required">
         <br><br>
         <input type="submit"  class="my-cta-button" value="Predict">
 
@@ -228,7 +228,7 @@ header{
 </div>
 <footer class="footer"> 
     <div id="footer_text">
-        Copyright © 2012 | Arnab Sarkar | <a href="https://houserentguesser.herokuapp.com/">House rent predictor</a> | <a href="https://github.com/Arnab14999">My Github</a>
+        Copyright © 2022 | Arnab Sarkar | <a href="https://houserentguesser.herokuapp.com/">House rent predictor</a> | <a href="https://github.com/Arnab14999">My Github</a>
     </div> 
 	
 </footer>  
